@@ -1,7 +1,6 @@
 package pokerEnums;
 
 public enum eRank {
-
 	TWO(2), 
 	THREE(3), 
 	FOUR(4), 
@@ -22,7 +21,6 @@ public enum eRank {
 	}
 
 	private int rank;
-	
 	public int getRank(){
 		return rank;
 	}

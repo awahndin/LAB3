@@ -59,11 +59,12 @@ public class Deck {
 	}
 	public Deck(int jokers, boolean Wildcard){
 		this(Wildcard);
-		for (short i=0;i<jokers;i++){
+		for (short i=0;i<jokers;++i){
 			Card Joker = new Card(eSuit.JOKER,eRank.JOKER,i+1);
 			cards.add(Joker);
 		}
 	}
+	
 	
 	private void ShuffleCards()
 	{

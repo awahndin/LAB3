@@ -88,8 +88,27 @@ public class Hand {
 	public int getHandStrength() {
 		return HandStrength;
 	}
-
-
+	public int getWildcard(){
+		return Wildcard;
+	}
+/*	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand {
+		ArrayList<Hand> HandRank = new ArrayList<Hand>();
+		Hand BestHand = null;
+		try {
+			if (){
+				
+			}
+			else {
+				
+			}
+		}
+		catch (exHand e){
+			System.out.println(e);
+		}
+	return BestHand;
+	}
+*/
+	
 	public ArrayList<Card> getKicker() {
 		return Kickers;
 	}
@@ -124,7 +143,10 @@ public class Hand {
 		
 		// Sort the cards!
 		Collections.sort(CardsInHand, Card.CardRank);
+		
 		//Joker Evaluation
+		//if the first card (or second) is a  joker check
+		//check the next card for highest value
 		if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() ==
 				eRank.JOKER) {
 			Wildcard = 2;
@@ -140,17 +162,31 @@ public class Hand {
 				HiHand = CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank().getRank();
 			}
 		// Ace Evaluation
-		if (Wildcard == 0)
+		//its supposed to check if you have 
+		//wildcard and make it an Ace
+		if (Wildcard == 0){
 			if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.ACE) {
 				Ace = true;
 		}
-			else if (Wildcard > 0){
-				if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.ACE
-					|| CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == eRank.ACE) 
-					{
-						Ace = true;
+		}
+		if (Wildcard == 1){
+			if (CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.ACE) 
+				{
+				Ace = true;
+			}	
+			else {
+				Ace = true;
 			}
-
+		}
+		if (Wildcard == 2) {
+			if (CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == eRank.ACE) 
+			{
+			Ace = true;
+			}
+			else {
+				Ace = true;
+		}
+		}
 		// Flush Evaluation
 		
 		if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getSuit() == CardsInHand
@@ -161,12 +197,11 @@ public class Hand {
 					.get(eCardNo.FourthCard.getCardNo()).getSuit()
 					&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getSuit() == CardsInHand
 						.get(eCardNo.FifthCard.getCardNo()).getSuit()) {
-				Flush = true;
+		Flush = true;
 		} 	
-			else {
-				Flush = false;
+		else {
+			Flush = false;
 				}
-		}
 
 		// Straight Evaluation
 		if (Ace) {
@@ -434,7 +469,7 @@ public class Hand {
 							remainingCards);
 		}
 			}
-	}
+	
 
 
 	private void ScoreHand(eHandStrength hST, int HiHand, int LoHand, ArrayList<Card> kickers) {

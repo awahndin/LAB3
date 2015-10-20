@@ -14,13 +14,14 @@ public enum eHandStrength {
 			return "Royal Flush";
 		}
 	},
-	JokerRoyalFlush(95){
+	/*JokerRoyalFlush(95){
 		public String toString()
 		{
 			return "Joker Royal Flush";
 		}
 	},
-
+*/
+	
 	StraightFlush(90){
 		public String toString()
 		{
